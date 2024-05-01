@@ -1,0 +1,12 @@
+{
+  "name": "1--asincronico--desafio-evaluado",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "Alejandra Flaño",
+  "license": "MIT"
+}
