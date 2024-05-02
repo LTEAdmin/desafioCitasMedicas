@@ -3,8 +3,8 @@ const axios = require("axios");
 const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 //const chalk = require('chalk');
-const _ = require("lodash/partition");
-/* const { partition } =  require('lodash/partition'); */
+const _ = require("lodash");
+//const partition =  require('lodash/partition'); 
 const app = express(); 
 const port = process.env.PORT || 3000;
 const url = "https://randomuser.me/api";
@@ -24,12 +24,12 @@ app.use('/usuarios',async (req, res) => {
         }; // se agrega la fecha usando moment y formateado para ser guardada en el array
         persona.push(personaRandom); //guarda la persona en el array
     });
-
-    const mujeres = _.partition(persona, (user) => {
-        user.gender == "female"
+    //tiene un ultimo elemnto en blanco, genera error, mejor hacer un for each 
+    const mujeres =_.partition(persona, (user) => {
+         user.gender === "female"
     });
-    console.log(mujeres[0]);
-    console.log(mujeres[1]);
+    console.log(mujeres);
+   
     /* const despliegue = `<h3>Mujeres</h3>
                     <ol> ${mujeres[0].map((user) => {
                         return `<li>Nombre: ${user.first} - Apellido: ${user.last} - Id: ${user.id} - Hora: ${user.timeStamp}</li>`;
@@ -45,7 +45,7 @@ app.use('/usuarios',async (req, res) => {
         `Nombre: ${user.first} - Apellido: ${user.last} - Id: ${user.id} - Hora: ${user.timeStamp} `
       ));  */
    
-    res.send(despliegue);
+   /*  res.send(despliegue); */
   });
 
 app.listen( port, () => {    
