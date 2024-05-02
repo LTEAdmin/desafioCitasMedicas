@@ -24,23 +24,17 @@ app.use('/usuarios',async (req, res) => {
         }; // se agrega la fecha usando moment y formateado para ser guardada en el array
         persona.push(personaRandom); //guarda la persona en el array
     });
-    //tiene un ultimo elemnto en blanco, genera error, mejor hacer un for each 
-    const mujeres =_.partition(persona, (user) => {
-         user.gender === "female"
-    });
-    console.log(mujeres);
-   
-    /* const despliegue = `<h3>Mujeres</h3>
-                    <ol> ${mujeres[0].map((user) => {
-                        return `<li>Nombre: ${user.first} - Apellido: ${user.last} - Id: ${user.id} - Hora: ${user.timeStamp}</li>`;
-                    })}
-                    </ol>
-                        <h3>Hombres</h3>
-                    <ol> ${mujeres[1].map((user) => {
-                        return `<li>Nombre: ${user.first} - Apellido: ${user.last} - Id: ${user.id} - Hora: ${user.timeStamp}</li>`;
-                    })}
-                    </ol>   `; */
     
+    const mujeres =_.partition(persona, (user) => {
+        return  user.gender === "female"
+    });
+    console.log('---------Hombres------------- ');
+    console.log(mujeres[1]);
+    console.log('----------Mujeres------------');
+    console.log(mujeres[0]);
+    //console.log(chalk.blue.bgWhite(mujeres[0]));
+   
+      
    /*  console.log( chalk.blue.bgWhite(
         `Nombre: ${user.first} - Apellido: ${user.last} - Id: ${user.id} - Hora: ${user.timeStamp} `
       ));  */
